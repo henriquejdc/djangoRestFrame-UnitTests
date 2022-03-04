@@ -8,6 +8,7 @@ Implementado:
 - Class usando ViewSet e Router
 - Class usando GenericViewSet e Router
 - Class usando ModelViewSet e Router
+- Unit Tests na Api com model, view e form test básicos
 
 Instalar: 
 - pip install -r requeriments.txt
