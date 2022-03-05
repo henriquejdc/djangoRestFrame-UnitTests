@@ -1,10 +1,13 @@
 # from django.shortcuts import render
 # from django.views.decorators.csrf import csrf_exempt
-# from rest_framework.parsers import JSONParser
 from django.http import HttpResponse, JsonResponse
 from django.shortcuts import get_object_or_404
+from django.shortcuts import render
+
 from .models import Article
 from .serializers import ArticleSerializer
+
+# from rest_framework.parsers import JSONParser
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import  status
@@ -16,6 +19,7 @@ from rest_framework.authentication import TokenAuthentication
 from rest_framework.permissions import IsAuthenticated
 from rest_framework import viewsets
 
+# API com class e generic viewset e mixins
 # Case don't need one this methods you can remove a mixins
 # class ArticleGenericViewSet(viewsets.GenericViewSet,
 #                             mixins.ListModelMixin,
@@ -25,12 +29,14 @@ from rest_framework import viewsets
 #                             mixins.DestroyModelMixin):
 # OU
 
+# API com class e generic viewset
 class ArticleGenericViewSet(viewsets.ModelViewSet):
 
     serializer_class = ArticleSerializer
     queryset =  Article.objects.all()
 
 
+# API com class e viewset
 class ArticleViewSet(viewsets.ViewSet):
 
     def list(self, request):
@@ -65,6 +71,7 @@ class ArticleViewSet(viewsets.ViewSet):
         return HttpResponse(status=status.HTTP_204_NO_CONTENT)
 
 
+# API com class e GenericAPIView
 class GenericAPIView(generics.GenericAPIView,
                      mixins.ListModelMixin,
                      mixins.CreateModelMixin,
@@ -95,7 +102,7 @@ class GenericAPIView(generics.GenericAPIView,
         return self.destroy(request, pk)
 
 
-
+# API com class e APIView
 class ArticleAPIView(APIView):
 
     def get(self, request):
@@ -137,8 +144,9 @@ class ArticleDetailsAPIView(APIView):
         return HttpResponse(status=status.HTTP_204_NO_CONTENT)
 
 
-
+# API com view e api_view / crsf
 @api_view(['GET','POST'])
+# @csrf_exempt
 def article_list(request):
 
     if request.method == 'GET':
@@ -154,6 +162,7 @@ def article_list(request):
         return Response(serializer.erros, status=status.HTTP_400_BAD_REQUEST)
 
 @api_view(['GET','POST','DELETE'])
+# @csrf_exempt
 def article_detail(request, pk):
 
     try:
@@ -176,3 +185,7 @@ def article_detail(request, pk):
     elif request.method == 'DELETE':
         article.delete()
         return HttpResponse(status=status.HTTP_204_NO_CONTENT)
+
+#  View para teste unitário
+def author_view(request):
+    return render(request, 'author_view.html', {})

@@ -10,6 +10,13 @@ class Article(models.Model):
     def __str__(self):
         return self.title
 
+class Author(models.Model):
+    name = models.CharField('Name', max_length=100)
+    age = models.PositiveIntegerField('Age')
+
+    def __str__(self):
+        return self.name
+
 # class ArticleSerializer(serializers.Serializer):
 #     title = serializers.CharField(max_length=100)
 #     author = serializers.CharField(max_length=100)

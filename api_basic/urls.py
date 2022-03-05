@@ -3,6 +3,7 @@ from rest_framework.routers import DefaultRouter
 from .views import article_list, article_detail
 from .views import ArticleAPIView, ArticleDetailsAPIView, GenericAPIView
 from .views import ArticleViewSet, ArticleGenericViewSet
+from .views import author_view
 
 router = DefaultRouter()
 router.register('article-viewset', ArticleViewSet, basename='article')
@@ -25,4 +26,6 @@ urlpatterns = [
     # With router and viewset
     # With pk/ get métodos with pk
     path('', include(router.urls)),
+
+    path('author', author_view, name='author_view')
 ]
