@@ -21,5 +21,9 @@ Criar o super usuário para autenticar:
 
 Utilizar o /admin para criar um Token
 
+Rodar os testes:
+- python manage.py test api_basic.tests # Todos os testes
+- python manage.py test api_basic.tests.unit_tests # Um único teste
+
 Seguido o tutorial abaixo:
 https://www.youtube.com/watch?v=B38aDwUpcFc&ab_channel=ParwizForogh
