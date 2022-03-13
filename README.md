@@ -26,4 +26,5 @@ Rodar os testes:
 - python manage.py test api_basic.tests.unit_tests # Um único teste
 
 Seguido o tutorial abaixo:
-https://www.youtube.com/watch?v=B38aDwUpcFc&ab_channel=ParwizForogh
+- https://www.youtube.com/watch?v=B38aDwUpcFc&ab_channel=ParwizForogh
+- https://www.youtube.com/watch?v=swEjbCW9XDY&ab_channel=VeryAcademy
